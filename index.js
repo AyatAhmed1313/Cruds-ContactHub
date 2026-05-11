@@ -21,7 +21,7 @@ displayContacts();
 // ~ Display Contacts
 function displayContacts(arr = allContacts) {
   var totalMarkUp = "";
-  // & No contact icon
+
   if (arr.length === 0) {
     totalMarkUp += `
                       <div class="text-center noContactFound">
@@ -38,12 +38,12 @@ function displayContacts(arr = allContacts) {
     `;
   }
   for (var i = 0; i < arr.length; i++) {
-    var selectedGroup = ""; // ! Gruop Span 
-    var displayImage = ""; // ! card Image
-    var displayEmail = ""; // ! Card Email
-    var displayAddress = ""; // ! card Adress
-    var emailButton = ""; // ! card's Email btn
-    var checkedImage = ""; // ! 
+    var selectedGroup = "";
+    var displayImage = "";
+    var displayEmail = "";
+    var displayAddress = "";
+    var emailButton = "";
+    var checkedImage = "";
     // & Display Image
 
     var badges = "";
@@ -100,7 +100,7 @@ function displayContacts(arr = allContacts) {
       `;
     }
 
-    // ! display Address
+    // & display Address
     if (arr[i].address) {
       displayAddress = `
       <div class="d-flex gap-2 align-items-center">
@@ -113,7 +113,7 @@ function displayContacts(arr = allContacts) {
                             </div>
       `;
     }
-    // ! selected Group
+    // & selected Group
     if (arr[i].group == "family") {
       selectedGroup = `<span class="family-select selected-group">${arr[i].group}</span>`;
     } else if (arr[i].group == "work") {
@@ -128,7 +128,7 @@ function displayContacts(arr = allContacts) {
     if (arr[i].emergency) {
       selectedGroup += `<span class="ms-2 d-flex align-items-center gap-1" style="color: #ff2056; background-color:#FFF1F2; padding:4px 8px; font-size:11px; border-radius:6px;"><i class="fa-solid fa-heart-pulse" ></i> emergency</span>`;
     }
-    // ! Checked Image
+    // & Checked Image
     if (arr[i].image) {
       checkedImage = `
                               <div
@@ -263,7 +263,7 @@ function displayFavorite() {
       checkedImage = `<div class="flex-shrink-0 image d-flex align-items-center justify-content-center fw-bolder rounded-4 text-white overflow-hidden object-fit-cover"><img src="${favList[i].image}" alt="" class="w-100 h-100"/></div>`;
     } else {
       checkedImage = `<div class="flex-shrink-0 default-image image d-flex align-items-center justify-content-center fw-bolder rounded-4 text-white overflow-hidden object-fit-cover">${getInitials(
-        favList[i].fullName
+        favList[i].fullName,
       )}</div>`;
     }
     favMarkUp += `<div class="d-flex gap-2 fav-cont align-items-center mb-3">${checkedImage}<div class="flex-grow-1"><h4 class="m-0 fs-6">${favList[i].fullName}</h4><p class="m-0 phone-number">${favList[i].phoneNumber}</p></div><a href="tel:${favList[i].phoneNumber}" class="d-flex phone-icon align-items-center justify-content-center flex-shrink-0"><i class="fa-solid fa-phone"></i></a></div>`;
@@ -318,7 +318,7 @@ function addContact() {
     swal(
       "Error",
       "This phone number already exists in your contacts.",
-      "error"
+      "error",
     );
     return;
   }
